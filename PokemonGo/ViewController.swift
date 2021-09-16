@@ -34,8 +34,42 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
            //teste do timer.
             print("exibe anotação")
             
+            if let coordenadas = self.gerenciadorLocalizacao.location?.coordinate {
+                    let anotacao = MKPointAnnotation()
+                
+                //Constantes para irem gerando latitude e longitudes aleatórias positivas e negativas
+                let latAleatoria = (Double (arc4random_uniform(400)) - 200 ) / 100000.0
+                let longAleatoria = (Double (arc4random_uniform(400)) - 200 ) / 100000.0
+                
+                anotacao.coordinate = coordenadas
+                anotacao.coordinate.latitude += latAleatoria
+                anotacao.coordinate.longitude += longAleatoria
+                    
+                self.mapa.addAnnotation( anotacao )
+                 
+            }
+            
         }
         
+        
+    }
+    //Método que recupera as anotações geradas no mapa e trata, trocando por imagens.
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        let anotacaoView = MKAnnotationView(annotation: annotation, reuseIdentifier: nil )
+        
+        let imagePikachu: UIImage = UIImage.init(named: "pikachu-2")!
+        let imagePlayer: UIImage = UIImage.init(named: "player")!
+        
+        if annotation is MKUserLocation{//player
+            
+            anotacaoView.image = imagePlayer
+            
+        }else{//Mensagens aleatórias
+            anotacaoView.image = imagePikachu
+        }
+        
+        return anotacaoView
         
     }
     

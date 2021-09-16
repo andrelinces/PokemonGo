@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D332650826F40A3A00E6FD2C /* CoreDataPokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D332650726F40A3A00E6FD2C /* CoreDataPokemon.swift */; };
 		D34D00BD26F29E95007345A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D00BC26F29E95007345A3 /* AppDelegate.swift */; };
 		D34D00BF26F29E95007345A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D00BE26F29E95007345A3 /* SceneDelegate.swift */; };
 		D34D00C126F29E95007345A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34D00C026F29E95007345A3 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D332650726F40A3A00E6FD2C /* CoreDataPokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPokemon.swift; sourceTree = "<group>"; };
 		D34D00B926F29E95007345A3 /* PokemonGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokemonGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D34D00BC26F29E95007345A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D34D00BE26F29E95007345A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				D34D00CA26F29E96007345A3 /* LaunchScreen.storyboard */,
 				D34D00CD26F29E96007345A3 /* Info.plist */,
 				D34D00C526F29E95007345A3 /* PokemonGo.xcdatamodeld */,
+				D332650726F40A3A00E6FD2C /* CoreDataPokemon.swift */,
 			);
 			path = PokemonGo;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				D34D00C726F29E95007345A3 /* PokemonGo.xcdatamodeld in Sources */,
 				D34D00BD26F29E95007345A3 /* AppDelegate.swift in Sources */,
 				D34D00BF26F29E95007345A3 /* SceneDelegate.swift in Sources */,
+				D332650826F40A3A00E6FD2C /* CoreDataPokemon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
