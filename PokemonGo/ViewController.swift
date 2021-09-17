@@ -17,6 +17,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var gerenciadorLocalizacao = CLLocationManager()
     //Para estipular a quantidade de vezes que o método didupadate será executado automaticamente, para depois para de executar e usuário conseguir mover o mapa sem centralizar automaticamente.
     var contador = 0
+    //Atributo para utilizar os recursos do coredata Pokemon
+    var coreDataPokemon: CoreDataPokemon!
+    var pokemons: [Pokemon] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +30,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         gerenciadorLocalizacao.delegate = self
         gerenciadorLocalizacao.requestWhenInUseAuthorization()
         gerenciadorLocalizacao.startUpdatingLocation()
+        
+        //recuperar pokemons
+        self.coreDataPokemon = CoreDataPokemon()
+        self.pokemons = self.coreDataPokemon.recuperarTodosPokemons()
         
         //Criar uma exibição de mensagens aleatórias para depois trocar por imagens de pokémons.
         

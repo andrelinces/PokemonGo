@@ -20,7 +20,7 @@ class CoreDataPokemon {
     
     
     //Adicionar todos os pokemons
-    func adicionarPokemons(){
+    func adicionarTodosPokemons(){
         
         let context = self.getContex()
         
@@ -49,6 +49,31 @@ class CoreDataPokemon {
         pokemon.nome = nome
         pokemon.nomeImagem = nomeImage
         pokemon.capturado = capturado
+        
+    }
+    
+    //Método para recuperar os pokémons, testando antes se já exite os pokémons criados senão adiciona-los uma única vez
+    func recuperarTodosPokemons() -> [Pokemon] {
+        
+        let context = self.getContex()
+        
+        
+        do {
+            let pokemons = try context.fetch( Pokemon.fetchRequest() ) as! [Pokemon]
+            //teste para verificar se tem pokemons adicionado, senão inicializa a adição.
+            if pokemons.count == 0 {
+                
+                self.adicionarTodosPokemons()
+                
+                return self.recuperarTodosPokemons()
+            }
+            
+            return pokemons
+            
+        } catch  {
+            
+        }
+        return []
         
     }
     
