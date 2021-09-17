@@ -43,13 +43,24 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             print("exibe anotação")
             
             if let coordenadas = self.gerenciadorLocalizacao.location?.coordinate {
-                    let anotacao = MKPointAnnotation()
+                //Criada constante para gerar números aleatórios e utilizar os números para selecionar os nomes dos pokemons aleatoriamente, pois no método, mkannotation, não possui outro parâmetro que pudesse gerar imagens aleatórias.
+                let totalPokemons = UInt32( self.pokemons.count)
+                let indicePokemonAleatorio = arc4random_uniform(totalPokemons)
+                
+                let pokemon = self.pokemons[ Int(indicePokemonAleatorio) ]
+                //print para testar se está selecionando aleatoriamente os nomes dos pokemons.
+                print( pokemon.nome )
+                
+                //alterado de mkpointanotation, para a classe pokemonAnotacao
+                    let anotacao = PokemonAnotacao(coordenadas: coordenadas, pokemon: pokemon)
                 
                 //Constantes para irem gerando latitude e longitudes aleatórias positivas e negativas
                 let latAleatoria = (Double (arc4random_uniform(400)) - 200 ) / 100000.0
                 let longAleatoria = (Double (arc4random_uniform(400)) - 200 ) / 100000.0
                 
-                anotacao.coordinate = coordenadas
+                
+                //não precisa mais, pois foi criada a classe pokemonAnotacao que já possui essa configuracao
+                //anotacao.coordinate = coordenadas
                 anotacao.coordinate.latitude += latAleatoria
                 anotacao.coordinate.longitude += longAleatoria
                     
@@ -74,7 +85,10 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             anotacaoView.image = imagePlayer
             
         }else{//Mensagens aleatórias
-            anotacaoView.image = imagePikachu
+            //constante anot. criada para atribuir ao annotation, neste caso agora receber além do anatocao o objeto aleatorio de nomes (pokemon)
+            let pokemon = (annotation as! PokemonAnotacao).pokemon
+            //print( anot.pokemon.nome )
+            anotacaoView.image = UIImage(named: pokemon.nomeImagem!)
         }
         
         return anotacaoView

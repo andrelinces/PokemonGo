@@ -63,6 +63,43 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="77.678571428571431"/>
         </scene>
+        <!--Pokemon Agenda View Controller-->
+        <scene sceneID="AQk-qu-Bpw">
+            <objects>
+                <viewController id="tCk-jA-XDP" customClass="PokemonAgendaViewController" customModule="PokemonGo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hac-cC-zr1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Is1-Vs-hvD">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hda-7e-Qyv">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hda-7e-Qyv" id="FrH-rX-6gd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="8c0-aS-PqW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8c0-aS-PqW" firstAttribute="trailing" secondItem="Is1-Vs-hvD" secondAttribute="trailing" id="75h-cY-ZF3"/>
+                            <constraint firstItem="Is1-Vs-hvD" firstAttribute="top" secondItem="8c0-aS-PqW" secondAttribute="top" id="JIF-Ra-ZT2"/>
+                            <constraint firstItem="8c0-aS-PqW" firstAttribute="bottom" secondItem="Is1-Vs-hvD" secondAttribute="bottom" id="Qzr-Et-Eup"/>
+                            <constraint firstItem="Is1-Vs-hvD" firstAttribute="leading" secondItem="8c0-aS-PqW" secondAttribute="leading" id="Z9l-Hy-Ctc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O1Z-8b-eDN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="793" y="78"/>
+        </scene>
     </scenes>
     <resources>
         <image name="compass" width="40" height="40"/>
