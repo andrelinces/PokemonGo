@@ -39,6 +39,7 @@
                                 <state key="normal" image="pokeball"/>
                                 <connections>
                                     <action selector="abrirPokedex:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qfF-kN-yd9"/>
+                                    <segue destination="tCk-jA-XDP" kind="presentation" id="007-x3-bZA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -68,41 +69,61 @@
             <objects>
                 <viewController id="tCk-jA-XDP" customClass="PokemonAgendaViewController" customModule="PokemonGo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hac-cC-zr1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Is1-Vs-hvD">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udr-ir-wHi">
+                                <rect key="frame" x="187" y="753" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KCl-R6-k08"/>
+                                    <constraint firstAttribute="width" constant="40" id="bKi-FD-4TC"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="map"/>
+                                <connections>
+                                    <action selector="voltarMapa:" destination="tCk-jA-XDP" eventType="touchUpInside" id="3RX-6O-oTp"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="URo-E8-sH9">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hda-7e-Qyv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="celulaReuso" id="fSI-ZI-yh8">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hda-7e-Qyv" id="FrH-rX-6gd">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fSI-ZI-yh8" id="s5e-uy-03m">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="tCk-jA-XDP" id="YLT-cM-fFT"/>
+                                    <outlet property="delegate" destination="tCk-jA-XDP" id="KQA-jb-ilA"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8c0-aS-PqW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8c0-aS-PqW" firstAttribute="trailing" secondItem="Is1-Vs-hvD" secondAttribute="trailing" id="75h-cY-ZF3"/>
-                            <constraint firstItem="Is1-Vs-hvD" firstAttribute="top" secondItem="8c0-aS-PqW" secondAttribute="top" id="JIF-Ra-ZT2"/>
-                            <constraint firstItem="8c0-aS-PqW" firstAttribute="bottom" secondItem="Is1-Vs-hvD" secondAttribute="bottom" id="Qzr-Et-Eup"/>
-                            <constraint firstItem="Is1-Vs-hvD" firstAttribute="leading" secondItem="8c0-aS-PqW" secondAttribute="leading" id="Z9l-Hy-Ctc"/>
+                            <constraint firstItem="udr-ir-wHi" firstAttribute="centerX" secondItem="hac-cC-zr1" secondAttribute="centerX" id="QBj-Pj-pdx"/>
+                            <constraint firstItem="udr-ir-wHi" firstAttribute="top" secondItem="URo-E8-sH9" secondAttribute="bottom" id="Z6d-pJ-kTe"/>
+                            <constraint firstItem="8c0-aS-PqW" firstAttribute="trailing" secondItem="URo-E8-sH9" secondAttribute="trailing" id="c3I-bZ-oFM"/>
+                            <constraint firstItem="8c0-aS-PqW" firstAttribute="bottom" secondItem="udr-ir-wHi" secondAttribute="bottom" constant="15" id="pjB-kh-6iP"/>
+                            <constraint firstItem="URo-E8-sH9" firstAttribute="top" secondItem="8c0-aS-PqW" secondAttribute="top" id="qT4-RL-uJn"/>
+                            <constraint firstItem="URo-E8-sH9" firstAttribute="leading" secondItem="8c0-aS-PqW" secondAttribute="leading" id="s2w-Pj-GpS"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="YMm-9b-1ms"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O1Z-8b-eDN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="793" y="78"/>
+            <point key="canvasLocation" x="771.01449275362324" y="77.678571428571431"/>
         </scene>
     </scenes>
     <resources>
         <image name="compass" width="40" height="40"/>
+        <image name="map" width="40" height="40"/>
         <image name="pokeball" width="40" height="40"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
