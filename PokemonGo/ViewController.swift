@@ -94,6 +94,72 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         return anotacaoView
         
     }
+    //Método que é acionado toda vez que o usuário clica em uma anotação do mapa.
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        let anotacao = view.annotation
+        let pokemon = (view.annotation as! PokemonAnotacao).pokemon
+        
+        mapView.deselectAnnotation( anotacao, animated: true)
+        
+        if anotacao is MKUserLocation{
+            
+            return
+        }
+            
+            if let cordAnotacao = anotacao?.coordinate{
+                let regiao = MKCoordinateRegion.init(center: cordAnotacao,latitudinalMeters: 200, longitudinalMeters: 200)
+                mapa.setRegion(regiao, animated: true)
+                
+            //print para testar quando clica na image da marcação no mapa.
+            //print("anotacao selecionada")
+            
+                //Timer para aguardar a tela centralizar e depois verificar se o usuário está perto ou longe.
+                Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
+                    
+                    if let coordUsuario = self.gerenciadorLocalizacao.location?.coordinate{
+                        
+                        if self.mapa!.visibleMapRect.contains(MKMapPoint.init(coordUsuario)){
+                            //print para testar se esta centralizando, para verificar a distância
+                            //print("Você está perto, pode capturar o pokemon")
+                            self.coreDataPokemon.capturarPokemon(pokemon: pokemon)
+                            //Removendo a anotação (pokemon capturado do mapa)
+                            self.mapa.removeAnnotation( anotacao! )
+                            
+                            //Exibindo mensagem na tela para o usuário do pokemon capturado.
+                            let alertController = UIAlertController(title: "Parabéns !!!" ,
+                                                                    message: "Voce capturou o pokémon: \(pokemon.nome!)",
+                                                                    preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok!",
+                                                   style: .default,
+                                                   handler: nil)
+                            alertController.addAction( ok )
+                            
+                            self.present(alertController, animated: true, completion: nil)
+                            
+                        }else{
+                            //print para testar se o pokemon está longe do usuário
+                            //print("Você está muito longe, não pode capturar o pokemon")
+                            
+                            //Exibindo mensagem na tela para o usuário do pokemon capturado.
+                            let alertController = UIAlertController(title: "Não foi desta vez..." ,
+                                                                    message: "Voce não pode capturar o pokémon, precisa se aproximar mais do pokémon: \(pokemon.nome!)",
+                                                                    preferredStyle: .alert)
+                            let ok = UIAlertAction(title: "Ok!",
+                                                   style: .default,
+                                                   handler: nil)
+                            alertController.addAction( ok )
+                            
+                            self.present(alertController, animated: true, completion: nil)
+                            
+                            
+                        }
+                    }
+                      
+                }
+                 
+        }
+    }
     
     //Método para localizar o usuário no mapa.
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

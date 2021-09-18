@@ -93,5 +93,19 @@ class CoreDataPokemon {
         
         return []
     }
+    //Método para capturar os pokemons quando selecionados no mapa e carregar na pokeagenda.
+    func capturarPokemon( pokemon: Pokemon ){
+        
+        let context = self.getContex()
+        pokemon.capturado = true
+        
+        do {
+            try context.save()
+        } catch  {
+            
+        }
+        
+        
+    }
     
 }

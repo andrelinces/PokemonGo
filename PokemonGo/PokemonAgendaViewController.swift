@@ -60,8 +60,21 @@ class PokemonAgendaViewController: UIViewController, UITableViewDelegate, UITabl
     //Método para montar a célula
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let pokemon: Pokemon
+        
+        if indexPath.section == 0 {
+            
+            pokemon = self.pokemonsCapturados[ indexPath.row ]
+            
+        }else{
+            
+            pokemon = self.pokemonsNaoCapturados[ indexPath.row ]
+            
+        }
+        
         let celula = UITableViewCell(style: .default, reuseIdentifier: "celulaReuso")
-        celula.textLabel?.text = "texto"
+        celula.textLabel?.text = pokemon.nome
+        celula.imageView?.image = UIImage( named: pokemon.nomeImagem! )
         
         return celula
         
